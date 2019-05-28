@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-12 mb-4 mt-2">
+    <h1 class="text-center" *ngIf="shoppingList">{{shoppingList.name}}</h1>
+
+  </div>
+  <div class="col-12">
+    <fieldset class="form-group">
+      <form [formGroup]="form" class="form mb-1" (ngSubmit)="onSubmit()">
+        <label class="sr-only" for="nameInput">Name</label>
+        <input #name  type="text" formControlName="name" class="form-control mb-2 mr-sm-2 " id="nameInput"
+               placeholder="Articulo">
+
+        <label class="sr-only" for="priceInput">Username</label>
+        <div class="input-group mb-2 mr-sm-2">
+          <!--<div class="input-group-addon">@</div>-->
+          <input type="number" formControlName="price" class="form-control" id="priceInput" placeholder="Precio">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Agregar</button>
+      </form>
+    </fieldset>
+    <div *ngIf="shoppingList && shoppingList.items.length">
+      <h2>Total: {{total | number}}</h2>
+      <table class="table">
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Acciones</th>
+        </tr>
+        <tr *ngFor="let item of shoppingList.items">
+          <td>{{item.name}}</td>
+          <td>{{item.price | number}}</td>
+          <td>
+            <!--<div class="btn-group btn-collapse btn-toggle">-->
+              <!--<div class="btn btn-primary"><i class="far fa-edit"></i></div>-->
+              <div class="btn btn-danger btn-block btn-sm" (click)="onDelete(item._id)"><i class="far fa-trash-alt"></i></div>
+            <!--</div>-->
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+

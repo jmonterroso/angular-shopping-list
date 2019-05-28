@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-6 col-12 mx-auto my-5">
+    <fieldset class="form-group">
+      <legend class="text-center mb-3">Crear Lista de Compras</legend>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group" [ngClass]="{'form-group-error': submitted && f.name.errors }">
+
+          <input type="text" formControlName="name" class="form-control" id="name"
+                 placeholder="Nombre de la lista">
+        </div>
+
+        <button type="submit" class="btn btn-block btn-primary">Crear</button>
+      </form>
+    </fieldset>
+  </div>
+</div>
