@@ -7,7 +7,7 @@
     "start": "node server.js",
     "postinstall": "ng build --aot --prod",
     "start:ng": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
