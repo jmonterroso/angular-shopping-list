@@ -7,32 +7,43 @@
     <fieldset class="form-group">
       <form [formGroup]="form" class="form mb-1" (ngSubmit)="onSubmit()">
         <label class="sr-only" for="nameInput">Name</label>
-        <input #name  type="text" formControlName="name" class="form-control mb-2 mr-sm-2 " id="nameInput"
+        <input #name type="text" formControlName="name" class="form-control mb-2 mr-sm-2 " id="nameInput"
                placeholder="Articulo">
 
         <label class="sr-only" for="priceInput">Username</label>
-        <div class="input-group mb-2 mr-sm-2">
-          <!--<div class="input-group-addon">@</div>-->
-          <input type="number" formControlName="price" class="form-control" id="priceInput" placeholder="Precio">
+        <div class="row">
+          <div class="input-group mb-2 col-6">
+            <!--<div class="input-group-addon">@</div>-->
+            <input type="number" formControlName="price" class="form-control" id="priceInput" placeholder="Precio">
+          </div>
+          <div class="input-group mb-2  col-6">
+            <!--<div class="input-group-addon">@</div>-->
+            <input type="number" formControlName="qty" class="form-control" id="qtyInput" placeholder="Cantidad">
+          </div>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Agregar</button>
       </form>
     </fieldset>
     <div *ngIf="shoppingList && shoppingList.items.length">
-      <h2>Total: {{total | number}}</h2>
+      <h2>Total: {{shoppingList.total || total | number}}</h2>
       <table class="table">
         <tr>
-          <th>Nombre</th>
-          <th>Precio</th>
-          <th>Acciones</th>
+          <th >Nombre</th>
+          <th class="text-center">Cantidad</th>
+          <th class="text-center">Unidad</th>
+          <th class="text-center">Precio</th>
+          <th class="text-center"></th>
         </tr>
         <tr *ngFor="let item of shoppingList.items">
-          <td>{{item.name}}</td>
-          <td>{{item.price | number}}</td>
-          <td>
+          <td >{{item.name}}</td>
+          <td class="text-center">{{item.qty}}</td>
+          <td class="text-center">{{item.unitPrice || item.price | number}}</td>
+          <td class="text-center">{{item.price | number}}</td>
+          <td class="text-center">
             <!--<div class="btn-group btn-collapse btn-toggle">-->
-              <!--<div class="btn btn-primary"><i class="far fa-edit"></i></div>-->
-              <div class="btn btn-danger btn-block btn-sm" (click)="onDelete(item._id)"><i class="far fa-trash-alt"></i></div>
+            <!--<div class="btn btn-primary"><i class="far fa-edit"></i></div>-->
+            <div class="btn btn-danger btn-block btn-sm" (click)="onDelete(item._id)"><i class="far fa-trash-alt"></i>
+            </div>
             <!--</div>-->
           </td>
         </tr>

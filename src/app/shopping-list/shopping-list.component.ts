@@ -26,6 +26,7 @@ export class ShoppingListComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
+      qty: [1, Validators.required]
     });
   }
 
@@ -51,7 +52,7 @@ export class ShoppingListComponent implements OnInit {
     }
 
     this.shoppingListService.addToShoppingList(this.id, this.form.value).subscribe(() => this.loadShoppingList());
-    this.form.reset();
+    this.form.reset({qty: 1});
     this.nameField.nativeElement.focus();
 
   }
