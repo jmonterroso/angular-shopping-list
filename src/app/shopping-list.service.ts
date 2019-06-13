@@ -10,10 +10,8 @@ import {environment} from './../environments/environment';
 export class ShoppingListService {
 
   constructor(private http: HttpClient) { }
-  getShoppingList(): Observable<any[]> {
-    return this.http.get(`${environment.apiUrl}/shopping-list`).pipe(
-      map(res => res['edges'] || [])
-    );
+  getShoppingList() {
+    return this.http.get(`${environment.apiUrl}/shopping-list`);
   }
 
   getShoppingListById(id): Observable<any> {
