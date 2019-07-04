@@ -9,7 +9,7 @@ import {ShoppingListService} from '../shopping-list.service';
 export class ShoppingComponent implements OnInit {
 
   constructor(private shoppingListService: ShoppingListService) {}
-
+  total = 0;
   shoppingList;
   ngOnInit(): void {
     this.loadShoppingList();
@@ -18,7 +18,16 @@ export class ShoppingComponent implements OnInit {
     this.shoppingListService.deleteShoppingList(id).subscribe(() => this.loadShoppingList());
   }
   loadShoppingList() {
-    this.shoppingListService.getShoppingList().subscribe(item => this.shoppingList = item);
+    this.shoppingListService.getShoppingList().subscribe(item => {
+      this.shoppingList = item;
+      console.log(this.shoppingList);
+      if (this.shoppingList) {
+        this.total = this.shoppingList.reduce((sum, bioy) => {
+          return sum + bioy.node.total;
+        }, 0);
+      }
+
+    });
   }
 
 
