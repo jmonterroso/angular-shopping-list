@@ -22,8 +22,8 @@ export class ShoppingComponent implements OnInit {
       this.shoppingList = item;
       console.log(this.shoppingList);
       if (this.shoppingList) {
-        this.total = this.shoppingList.reduce((sum, bioy) => {
-          return sum + bioy.node.total;
+        this.total = this.shoppingList.reduce((sum, item) => {
+          return sum + item.total;
         }, 0);
       }
 
