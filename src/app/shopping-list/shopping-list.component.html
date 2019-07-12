@@ -14,11 +14,12 @@
         <div class="row">
           <div class="input-group mb-2 col-6">
             <!--<div class="input-group-addon">@</div>-->
-            <input type="number" formControlName="price" class="form-control" id="priceInput" placeholder="Precio">
+            <input type="tel" pattern="[0-9]*" novalidate formControlName="price" class="form-control" id="priceInput" placeholder="Precio">
           </div>
           <div class="input-group mb-2  col-6">
             <!--<div class="input-group-addon">@</div>-->
-            <input type="number" formControlName="qty" class="form-control" id="qtyInput" placeholder="Cantidad">
+
+            <input type="tel" pattern="[0-9]*" novalidate formControlName="qty" class="form-control" id="qtyInput" placeholder="Cantidad">
           </div>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Agregar</button>
