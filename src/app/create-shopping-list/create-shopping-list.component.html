@@ -4,9 +4,18 @@
       <legend class="text-center mb-3">Crear Lista de Compras</legend>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="form-group" [ngClass]="{'form-group-error': submitted && f.name.errors }">
+          <div class="form-group">
+            <label for="name">Nombre de la lista</label>
+            <input type="text" formControlName="name" class="form-control" id="name"
+                   placeholder="Nombre de la lista">
+          </div>
 
-          <input type="text" formControlName="name" class="form-control" id="name"
-                 placeholder="Nombre de la lista">
+          <div class="form-group">
+            <label for="budget">Presupuesto</label>
+            <input type="tel" pattern="[0-9]*" novalidate  formControlName="budget" class="form-control" id="budget"
+                   placeholder="Presupuesto">
+
+          </div>
         </div>
 
         <button type="submit" class="btn btn-block btn-primary">Crear</button>

@@ -23,6 +23,7 @@ export class CreateShoppingListComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
+      budget: [0],
     });
   }
   get f() {
