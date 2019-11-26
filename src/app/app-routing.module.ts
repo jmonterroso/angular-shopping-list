@@ -4,6 +4,7 @@ import {ShoppingListComponent} from './shopping-list/shopping-list.component';
 import {ShoppingComponent} from './shopping/shopping.component';
 import {CreateShoppingListComponent} from './create-shopping-list/create-shopping-list.component';
 
+
 const routes: Routes = [
   // {
   //   path: '',
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
   path: 'shopping/:id',
   component: ShoppingListComponent
+},
+{
+  path: 'shopping/edit/:id',
+    component: CreateShoppingListComponent
 },
 
   {

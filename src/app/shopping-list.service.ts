@@ -9,7 +9,9 @@ import {environment} from './../environments/environment';
 })
 export class ShoppingListService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
+
   getShoppingList() {
     return this.http.get(`${environment.apiUrl}/shopping-list`);
   }
@@ -22,15 +24,29 @@ export class ShoppingListService {
   createShoppingList(item) {
     return this.http.post(`${environment.apiUrl}/shopping-list`, item);
   }
+
+  editShoppingLIst(id, item) {
+    return this.http.put(`${environment.apiUrl}/shopping-list/${id}`, item);
+  }
+
   deleteShoppingList(id) {
     return this.http.delete(`${environment.apiUrl}/shopping-list/${id}`);
   }
+
   addToShoppingList(id, item) {
     return this.http.post(`${environment.apiUrl}/shopping-list/${id}`, item);
   }
 
   removeFromShoppingList(id, itemId) {
     return this.http.delete(`${environment.apiUrl}/shopping-list/${id}/item/${itemId}`);
+  }
+
+  getShoppingItemFromList(id) {
+    return this.http.get(`${environment.apiUrl}/shopping-item/${id}`);
+  }
+
+  editShoppingItem(id, itemId, item) {
+    return this.http.put(`${environment.apiUrl}/shopping-list/${id}/item/${itemId}`, item);
   }
 
 
